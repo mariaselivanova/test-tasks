@@ -1,57 +1,42 @@
-const mainBtn = document.querySelector(".btn");
-const closeBtn = document.querySelector(".btn_type_close");
+const select = (selector) => document.querySelector(selector);
+const addClass = (element, className) => element.classList.add(className);
+const removeClass = (element, className) => element.classList.remove(className);
+const toggleClass = (element, className) => element.classList.toggle(className);
 
-const modal = document.querySelector(".modal");
-const logoInput = document.querySelector(".form__input_type_logo");
+const mainBtn = select(".btn");
+const closeBtn = select(".btn_type_close");
+const modal = select(".modal");
+const logoInput = select(".form__input_type_logo");
+const submitBtn = select(".form__btn");
+const chooseFileCaption = select(".form__caption");
+const chooseFilePhoto = select(".form__wrapper_type_logo");
+const removeChosenFileBtn = select(".form__icon-wrapper");
+const logoDefaultPhoto = select(".form__wrapper_type_logo");
 
-const chooseFileIcon = document.getElementById("choose-file-icon");
-const chooseFileCaption = document.querySelector(".form__caption");
-const chooseFilePhoto = document.querySelector(".form__wrapper_type_logo");
-const removeChosenFileBtn = document.querySelector(".form__icon-wrapper");
+const fileInput = select("#logo");
+const partnerForm = select("#become-partner");
+const chooseFileIcon = select("#choose-file-icon");
 
-const logoDefaultPhoto = document.querySelector(".form__wrapper_type_logo");
-const fileInput = document.getElementById("logo");
-const partnerForm = document.getElementById("become-partner");
-const submitBtn = partnerForm.querySelector(".form__btn");
+const requiredInputs = [
+  { id: "name", pattern: /^[a-zA-Zа-яА-Я]+$/ },
+  { id: "tel", pattern: /^\+\d{1,3}\s\d{3}\s\d{3}-\d{2}-\d{2}$/ },
+  { id: "email", pattern: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/ },
+];
 
-const openModal = () => {
-  modal.classList.add("modal_opened");
-  document.body.classList.add("modal-open");
-};
+const optionalInputs = [
+  { id: "website", pattern: /^[a-zA-Z0-9-]+\.[a-z]{2,}$/ },
+  { id: "vk", pattern: /^vk\.com\/[a-zA-Z0-9-_]+$/ },
+  { id: "ok", pattern: /^ok\.com\/[a-zA-Z0-9-_]+$/ },
+  { id: "facebook", pattern: /^facebook\.com\/[a-zA-Z0-9-_]+$/ },
+  { id: "instagram", pattern: /^instagram\.com\/[a-zA-Z0-9-_]+$/ },
+  { id: "youtube", pattern: /^youtube\.com\/[a-zA-Z0-9-_]+$/ },
+  { id: "ceo", pattern: /^[a-zA-Zа-яА-Я]+$/ },
+];
 
-const closeModal = () => {
-  modal.classList.remove("modal_opened");
-  document.body.classList.remove("modal-open");
-};
+const VALIDITY_MESSAGE = "Введите данные в заданном формате";
 
-const handleFormSubmit = () => {
-  console.log("You are awesome!");
-  closeModal();
-};
-
-const displaySelectedImage = (input) => {
-  const file = input.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      logoDefaultPhoto.style.backgroundImage = `url(${e.target.result})`;
-    };
-    reader.readAsDataURL(file);
-  } else {
-    logoDefaultPhoto.style.backgroundImage = "url('./assets/man.jpg')";
-  }
-};
-
-const removeSelectedImage = () => {
-  fileInput.value = "";
-  checkValidity({ target: fileInput });
-  logoDefaultPhoto.style.backgroundImage = "url('./assets/man.jpg')";
-};
-
-const checkValidity = (event) => {
-  const formNode = event.target.form;
-  const isValid = formNode.checkValidity();
-
+const checkValidity = () => {
+  const isValid = partnerForm.checkValidity();
   submitBtn.disabled = !isValid;
 
   if (!isValid) {
@@ -61,50 +46,77 @@ const checkValidity = (event) => {
   }
 };
 
-const vkInput = document.getElementById("vk");
-const vkPattern = /^vk\.com\/[a-zA-Z0-9-_]+$/;
+const openModal = () => addClass(modal, "modal_opened");
+const closeModal = () => removeClass(modal, "modal_opened");
 
-vkInput.addEventListener("input", () => {
-  const inputValue = vkInput.value;
-  const isValid = vkPattern.test(inputValue);
+const handleFormSubmit = (e) => {
+  e.preventDefault();
+  console.log("You are awesome!");
+  closeModal();
+};
 
-  if (!isValid) {
-    vkInput.setCustomValidity("Введите ссылку в формате vk.com/username");
-  } else {
-    vkInput.setCustomValidity("");
-  }
-  vkInput.reportValidity();
-});
+const displaySelectedImage = (input) => {
+  const file = input.files[0];
+  const backgroundImage = file
+    ? `url(${URL.createObjectURL(file)})`
+    : "url('./assets/man.jpg')";
+  logoDefaultPhoto.style.backgroundImage = backgroundImage;
+};
 
-// Input validity check and form submit
+const removeSelectedImage = () => {
+  fileInput.value = "";
+  checkValidity();
+  logoDefaultPhoto.style.backgroundImage = "url('./assets/man.jpg')";
+};
 
-chooseFileIcon.addEventListener("click", () => {
-  fileInput.click();
-});
-chooseFileCaption.addEventListener("click", () => {
-  fileInput.click();
-});
-chooseFilePhoto.addEventListener("click", () => {
-  fileInput.click();
-});
+const checkInputs = (inputInfo, callback) => {
+  const inputElement = select(`#${inputInfo.id}`);
+
+  inputElement.addEventListener("input", () => {
+    const value = inputElement.value;
+    const isValid = inputInfo.pattern.test(value);
+    inputElement.setCustomValidity(callback(isValid, value));
+    inputElement.reportValidity();
+  });
+};
+
+const checkRequiredInputs = (isValid) => {
+  return isValid ? "" : VALIDITY_MESSAGE;
+};
+
+const checkOptionalInputs = (isValid, value) => {
+  return isValid || !value ? "" : VALIDITY_MESSAGE;
+};
+
+requiredInputs.forEach((inputInfo) =>
+  checkInputs(inputInfo, checkRequiredInputs)
+);
+
+optionalInputs.forEach((inputInfo) =>
+  checkInputs(inputInfo, checkOptionalInputs)
+);
+
+const triggerFileInput = () => fileInput.click();
+const toggleModal = () => toggleClass(modal, "modal_opened");
+
+[chooseFileIcon, chooseFileCaption, chooseFilePhoto].forEach((element) =>
+  element.addEventListener("click", triggerFileInput)
+);
 removeChosenFileBtn.addEventListener("click", removeSelectedImage);
-logoInput.addEventListener("change", () => {
-  displaySelectedImage(logoInput);
-});
+logoInput.addEventListener("change", () => displaySelectedImage(logoInput));
 partnerForm.addEventListener("submit", handleFormSubmit);
 partnerForm.addEventListener("input", checkValidity);
+mainBtn.addEventListener("click", toggleModal);
+closeBtn.addEventListener("click", toggleModal);
 
-// Open/close modal
-
-mainBtn.addEventListener("click", openModal);
-closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => {
   if (e.target === modal) {
-    closeModal();
+    toggleModal();
   }
 });
-document.addEventListener("keydown", function (e) {
+
+document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    closeModal();
+    toggleModal();
   }
 });
