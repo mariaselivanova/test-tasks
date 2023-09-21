@@ -1,0 +1,13 @@
+.body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+
+  background-color: var(--main-bg-color);
+}
+
+.modal-open {
+  overflow: hidden;
+}

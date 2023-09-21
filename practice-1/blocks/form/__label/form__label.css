@@ -1,0 +1,11 @@
+.form__label {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+
+  font-family: "PT Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #6a6e72;
+  line-height: 0.16;
+}

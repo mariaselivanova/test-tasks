@@ -1,0 +1,15 @@
+.form__icon {
+  position: absolute;
+  top: 40px;
+  left: 65px;
+  z-index: 1;
+
+  width: 29px;
+  height: 29px;
+
+  cursor: pointer;
+}
+
+.form__icon:hover ~ .form__wrapper_type_logo {
+  opacity: 0.8;
+}

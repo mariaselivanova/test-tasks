@@ -1,0 +1,8 @@
+.form__label_required::before {
+  content: "✱";
+
+  margin-right: 3px;
+
+  color: #d90000;
+  font-size: 11px;
+}

@@ -1,0 +1,32 @@
+@import url("./vars.css");
+
+@import url("./blocks/body/body.css");
+
+@import url("./blocks/btn/btn.css");
+@import url("./blocks/btn/_type/btn_type_close.css");
+@import url("./blocks/btn/_inactive/btn_inactive.css");
+
+@import url("./blocks/modal/modal.css");
+@import url("./blocks/modal/_opened/modal_opened.css");
+@import url("./blocks/modal/__container/modal__container.css");
+@import url("./blocks/modal/__title/modal__title.css");
+
+@import url("./blocks/form/form.css");
+@import url("./blocks/form/__input/form__input.css");
+@import url("./blocks/form/__label/form__label.css");
+@import url("./blocks/form/__wrapper/form__wrapper.css");
+@import url("./blocks/form/__label/_required/form__label_required.css");
+@import url("./blocks/form/__input/_type/form__input_type_select.css");
+@import url("./blocks/form/__group/form__group.css");
+@import url("./blocks/form/__layout/form__layout.css");
+@import url("./blocks/form/__input/_type/form__input_type_logo.css");
+@import url("./blocks/form/__label/_type/form__label_type_logo.css");
+@import url("./blocks/form/__icon/form__icon.css");
+@import url("./blocks/form/__wrapper/_type/form__wrapper_type_logo.css");
+@import url("./blocks/form/__logo-group/form__logo-group.css");
+@import url("./blocks/form/__caption/form__caption.css");
+@import url("./blocks/form/__close-icon/form__close-icon.css");
+@import url("./blocks/form/__icon-wrapper/form__icon-wrapper.css");
+@import url("./blocks/form/__input-icon/form__input-icon.css");
+@import url("./blocks/form/__input/_type/form__input_type_nolabel.css");
+@import url("./blocks/form/__btn/form__btn.css");

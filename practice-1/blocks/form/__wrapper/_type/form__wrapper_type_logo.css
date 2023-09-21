@@ -1,0 +1,17 @@
+.form__wrapper_type_logo {
+  width: 165px;
+  height: 165px;
+
+  background-image: url("../../../../assets/man.jpg");
+  background-size: contain;
+  border-radius: 50%;
+
+  transition: opacity 0.3s ease;
+
+  filter: brightness(0.4);
+  cursor: pointer;
+}
+
+.form__wrapper_type_logo:hover {
+  opacity: 0.8;
+}

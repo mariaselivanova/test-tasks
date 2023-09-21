@@ -1,0 +1,9 @@
+.form__close-icon {
+  width: 15px;
+  height: 15px;
+
+  background-image: url("../../../assets/close-icon.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

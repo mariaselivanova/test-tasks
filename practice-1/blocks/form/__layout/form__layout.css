@@ -1,0 +1,16 @@
+.form__layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 34px;
+}
+
+@media screen and (max-width: 900px) {
+  .form__layout {
+    flex-direction: column-reverse;
+    margin-top: 34px;
+    width: 100%;
+    align-items: stretch;
+  }
+}

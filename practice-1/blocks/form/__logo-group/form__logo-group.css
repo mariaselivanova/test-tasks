@@ -1,0 +1,6 @@
+.form__logo-group {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}

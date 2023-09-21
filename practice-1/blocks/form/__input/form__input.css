@@ -1,0 +1,19 @@
+.form__input {
+  height: 54px;
+  min-width: 360px;
+  padding: 10px 16px 0 16px;
+  box-sizing: border-box;
+
+  color: #0c1014;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+
+  border: 1px solid #d6dade;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 500px) {
+  .form__input {
+    min-width: 260px;
+  }
+}

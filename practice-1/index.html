@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>practice-1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@800&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body class="body">
+    <button type="button" class="btn">Стать партнёром проекта</button>
+    <div class="modal">
+      <div class="modal__container">
+        <h2 class="modal__title">Стать партнёром проекта</h2>
+        <form class="form" id="become-partner">
+          <div class="form__layout">
+            <div class="form__group">
+              <div class="form__wrapper">
+                <label class="form__label form__label_required" for="name"
+                  >Название организации</label
+                >
+                <input
+                  class="form__input"
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="ООО Котики"
+                  required
+                  autofocus
+                  pattern="[A-Za-zА-Яа-яЁё\s]*"
+                />
+              </div>
+              <div class="form__wrapper">
+                <label class="form__label form__label_required" for="tel"
+                  >Телефон</label
+                >
+                <input
+                  class="form__input"
+                  type="tel"
+                  name="tel"
+                  id="tel"
+                  placeholder="+7 111 111-11-11"
+                  required
+                  pattern="[0-9+\-\s]+"
+                />
+              </div>
+              <div class="form__wrapper">
+                <label class="form__label form__label_required" for="email">
+                  E-mail</label
+                >
+                <input
+                  class="form__input"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="example@gmail.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form__logo-group">
+              <label
+                class="form__label form__label_required form__label_type_logo"
+                for="logo"
+              >
+                Логотип (jpeg, png)
+              </label>
+              <div class="form__icon-wrapper">
+                <img
+                  src="./assets/close-icon.svg"
+                  alt="удалить выбранный файл"
+                  class="form__close-icon"
+                  id="remove-chosen-file-icon"
+                />
+              </div>
+              <img
+                src="./assets/choose-file-icon.svg"
+                alt="выберите файл"
+                class="form__icon"
+                id="choose-file-icon"
+              />
+              <span class="form__caption">Выберите файл</span>
+              <div class="form__wrapper form__wrapper_type_logo">
+                <input
+                  class="form__input form__input_type_logo"
+                  type="file"
+                  accept="image/jpeg, image/png"
+                  name="logo"
+                  id="logo"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form__wrapper">
+            <label class="form__label form__label_required">Направление</label>
+            <select
+              class="form__input form__input_type_select"
+              name="specialization"
+              required
+            >
+              <option value="" disabled selected hidden>
+                Выберите направление
+              </option>
+              <option value="engineer">Экология</option>
+              <option value="scientist">Инженерия</option>
+              <option value="psychologist">Психология</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+          <div class="form__wrapper">
+            <input
+              class="form__input form__input_type_nolabel"
+              type="url"
+              name="website"
+              id="website"
+              placeholder="example.ru"
+            />
+            <img
+              src="./assets/website.svg"
+              alt="иконка веб-страницы"
+              class="form__input-icon"
+            />
+          </div>
+          <div class="form__wrapper">
+            <input
+              class="form__input form__input_type_nolabel"
+              type="text"
+              name="vk"
+              id="vk"
+              placeholder="vk.com/example"
+              required
+            />
+            <img
+              src="./assets/vk.svg"
+              alt="иконка вк"
+              class="form__input-icon"
+            />
+          </div>
+          <div class="form__wrapper">
+            <input
+              class="form__input form__input_type_nolabel"
+              type="url"
+              name="ok"
+              id="ok"
+              placeholder="ok.com/example"
+            />
+            <img
+              src="./assets/ok.svg"
+              alt="иконка ок"
+              class="form__input-icon"
+            />
+          </div>
+          <div class="form__wrapper">
+            <input
+              class="form__input form__input_type_nolabel"
+              type="url"
+              name="facebook"
+              id="facebook"
+              placeholder="facebook.com/example"
+            />
+            <img
+              src="./assets/facebook.svg"
+              alt="иконка фейсбук"
+              class="form__input-icon"
+            />
+          </div>
+          <div class="form__wrapper">
+            <input
+              class="form__input form__input_type_nolabel"
+              type="url"
+              name="instagram"
+              id="instagram"
+              placeholder="instagram.com/example"
+            />
+            <img
+              src="./assets/instagram.svg"
+              alt="иконка инстаграм"
+              class="form__input-icon"
+            />
+          </div>
+          <div class="form__wrapper">
+            <input
+              class="form__input form__input_type_nolabel"
+              type="url"
+              name="youtube"
+              id="youtube"
+              placeholder="youtube.com/example"
+            />
+            <img
+              src="./assets/youtube.svg"
+              alt="иконка ютуб"
+              class="form__input-icon"
+            />
+          </div>
+          <div class="form__wrapper">
+            <label class="form__label" for="ceo">Руководитель</label>
+            <input
+              class="form__input"
+              type="text"
+              name="ceo"
+              id="ceo"
+              placeholder="Иванов Иван Иванович"
+            />
+          </div>
+          <button type="submit" class="btn form__btn btn_inactive" disabled>
+            Стать партнёром проекта
+          </button>
+        </form>
+        <button type="button" class="btn btn_type_close">Отменить</button>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+.form__input_type_select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("../../../../assets/icon-arrow.svg");
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
