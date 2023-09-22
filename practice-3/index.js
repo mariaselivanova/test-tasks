@@ -39,6 +39,8 @@ searchInput.addEventListener("input", () => {
 
   if (!searchedValue) {
     renderTable(posts);
+    sortColumn = null;
+    sortDirection = "asc";
     return;
   }
 
