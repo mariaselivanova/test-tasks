@@ -1,6 +1,6 @@
 .form__input {
   height: 54px;
-  min-width: 360px;
+  width: 100%;
   padding: 10px 16px 0 16px;
   box-sizing: border-box;
 
@@ -10,10 +10,4 @@
 
   border: 1px solid #d6dade;
   border-radius: 2px;
-}
-
-@media screen and (max-width: 500px) {
-  .form__input {
-    min-width: 260px;
-  }
 }
