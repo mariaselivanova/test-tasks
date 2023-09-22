@@ -40,9 +40,9 @@ const checkValidity = () => {
   submitBtn.disabled = !isValid;
 
   if (!isValid) {
-    submitBtn.classList.add("btn_inactive");
+    addClass(submitBtn, "btn_inactive");
   } else {
-    submitBtn.classList.remove("btn_inactive");
+    removeClass(submitBtn, "btn_inactive");
   }
 };
 
@@ -71,7 +71,6 @@ const removeSelectedImage = () => {
 
 const checkInputs = (inputInfo, callback) => {
   const inputElement = select(`#${inputInfo.id}`);
-
   inputElement.addEventListener("input", () => {
     const value = inputElement.value;
     const isValid = inputInfo.pattern.test(value);
