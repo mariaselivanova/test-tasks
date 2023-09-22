@@ -38,7 +38,7 @@ searchInput.addEventListener("input", () => {
   const searchedValue = searchInput.value.trim().toLowerCase();
 
   if (!searchedValue) {
-    getPosts();
+    renderTable(posts);
     sortColumn = null;
     sortDirection = "asc";
     return;
@@ -48,13 +48,14 @@ searchInput.addEventListener("input", () => {
     return;
   }
 
-  posts = posts.filter(({ title, body }) => {
+  const filteredPosts = posts.filter(({ title, body }) => {
     return (
       title.toLowerCase().includes(searchedValue) ||
       body.toLowerCase().includes(searchedValue)
     );
   });
-  renderTable(posts);
+
+  renderTable(filteredPosts);
 });
 
 function sortData(column) {
