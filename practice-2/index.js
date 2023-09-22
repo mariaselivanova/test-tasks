@@ -1,5 +1,6 @@
 const postTable = document.getElementById("table");
 const tableBody = postTable.querySelector("tbody");
+
 let posts = [];
 
 async function getPosts() {

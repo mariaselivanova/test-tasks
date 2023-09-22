@@ -4,7 +4,7 @@
   padding: 10px 16px 0 16px;
   box-sizing: border-box;
 
-  color: #0c1014;
+  color: var(--primary-text-color);
   font-family: "PT Sans", sans-serif;
   font-size: 16px;
 

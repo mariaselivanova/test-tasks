@@ -66,11 +66,17 @@ function sortData(column) {
   const sorted = [...posts];
 
   sorted.sort((a, b) => {
-    const aValue = a[column];
-    const bValue = b[column];
+    const aVal = a[column];
+    const bVal = b[column];
 
-    if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
-    if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+    if (aVal < bVal) {
+      return sortDirection === "asc" ? -1 : 1;
+    }
+
+    if (aVal > bVal) {
+      return sortDirection === "asc" ? 1 : -1;
+    }
+
     return 0;
   });
 
