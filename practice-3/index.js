@@ -46,10 +46,8 @@ searchInput.addEventListener("input", () => {
     return;
   }
 
-  const filteredPosts = posts.filter(({ userId, id, title, body }) => {
+  const filteredPosts = posts.filter(({ title, body }) => {
     return (
-      userId.toString().includes(searchedValue) ||
-      id.toString().includes(searchedValue) ||
       title.toLowerCase().includes(searchedValue) ||
       body.toLowerCase().includes(searchedValue)
     );
