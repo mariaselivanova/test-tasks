@@ -2,6 +2,7 @@ import {
   requiredInputs,
   optionalInputs,
   VALIDITY_MESSAGE,
+  DEFAULT_PHOTO_URL,
 } from "./constants.js";
 
 const select = (selector) => document.querySelector(selector);
@@ -32,7 +33,7 @@ const displaySelectedImage = (input) => {
   const file = input.files[0];
   const backgroundImage = file
     ? `url(${URL.createObjectURL(file)})`
-    : "url('./assets/man.jpg')";
+    : DEFAULT_PHOTO_URL;
   logoDefaultPhoto.style.backgroundImage = backgroundImage;
 
   if (fileInput.currentImageURL) {
@@ -45,7 +46,7 @@ const displaySelectedImage = (input) => {
 const removeSelectedImage = () => {
   fileInput.value = "";
   checkValidity();
-  logoDefaultPhoto.style.backgroundImage = "url('./assets/man.jpg')";
+  logoDefaultPhoto.style.backgroundImage = DEFAULT_PHOTO_URL;
 
   if (fileInput.currentImageURL) {
     URL.revokeObjectURL(fileInput.currentImageURL);

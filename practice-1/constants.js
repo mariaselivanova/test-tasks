@@ -15,3 +15,5 @@ export const optionalInputs = [
 ];
 
 export const VALIDITY_MESSAGE = "Введите данные в заданном формате";
+
+export const DEFAULT_PHOTO_URL = "url('./assets/man.jpg')";
