@@ -1,7 +1,6 @@
 const select = (selector) => document.querySelector(selector);
 const addClass = (element, className) => element.classList.add(className);
 const removeClass = (element, className) => element.classList.remove(className);
-const toggleClass = (element, className) => element.classList.toggle(className);
 
 const mainBtn = select(".btn");
 const closeBtn = select(".btn_type_close");
@@ -37,7 +36,6 @@ const VALIDITY_MESSAGE = "Введите данные в заданном фор
 
 const openModal = () => addClass(modal, "modal_opened");
 const closeModal = () => removeClass(modal, "modal_opened");
-const toggleModal = () => toggleClass(modal, "modal_opened");
 const triggerFileInput = () => fileInput.click();
 
 // Add/remove logo input
@@ -121,12 +119,12 @@ removeChosenFileBtn.addEventListener("click", removeSelectedImage);
 logoInput.addEventListener("change", () => displaySelectedImage(logoInput));
 partnerForm.addEventListener("submit", handleFormSubmit);
 partnerForm.addEventListener("input", checkValidity);
-mainBtn.addEventListener("click", toggleModal);
-closeBtn.addEventListener("click", toggleModal);
+mainBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
 
 modal.addEventListener("click", (e) => {
   if (e.target === modal) {
-    toggleModal();
+    closeModal();
   }
 });
 
