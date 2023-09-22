@@ -6,6 +6,7 @@ const tableHeads = document.querySelectorAll("th");
 let posts = [];
 let sortColumn = null;
 let sortDirection = "asc";
+let filteredPosts = [];
 
 async function getPosts() {
   try {
@@ -41,6 +42,7 @@ searchInput.addEventListener("input", () => {
     renderTable(posts);
     sortColumn = null;
     sortDirection = "asc";
+    filteredPosts = [];
     return;
   }
 
@@ -48,13 +50,12 @@ searchInput.addEventListener("input", () => {
     return;
   }
 
-  const filteredPosts = posts.filter(({ title, body }) => {
+  filteredPosts = posts.filter(({ title, body }) => {
     return (
       title.toLowerCase().includes(searchedValue) ||
       body.toLowerCase().includes(searchedValue)
     );
   });
-
   renderTable(filteredPosts);
 });
 
@@ -65,7 +66,7 @@ function sortData(column) {
     sortDirection = "asc";
   }
 
-  const sorted = [...posts];
+  const sorted = filteredPosts.length ? [...filteredPosts] : [...posts];
 
   sorted.sort((a, b) => {
     const aVal = a[column];
