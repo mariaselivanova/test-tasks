@@ -56,11 +56,11 @@ const removeSelectedImage = () => {
 
 // Validation/form submit
 
-const checkInputs = (inputInfo, callback) => {
-  const inputElement = select(`#${inputInfo.id}`);
+const checkInputs = ({ id, pattern }, callback) => {
+  const inputElement = select(`#${id}`);
   inputElement.addEventListener("input", () => {
     const value = inputElement.value;
-    const isValid = inputInfo.pattern.test(value);
+    const isValid = pattern.test(value);
     inputElement.setCustomValidity(callback(isValid, value));
     inputElement.reportValidity();
   });
