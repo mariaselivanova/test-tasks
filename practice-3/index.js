@@ -6,7 +6,6 @@ const tableHeads = document.querySelectorAll("th");
 let posts = [];
 let sortColumn = null;
 let sortDirection = "asc";
-let isSearched = false;
 
 async function getPosts() {
   try {
@@ -42,7 +41,6 @@ searchInput.addEventListener("input", () => {
     getPosts();
     sortColumn = null;
     sortDirection = "asc";
-    isSearched = false;
     return;
   }
 
@@ -56,7 +54,6 @@ searchInput.addEventListener("input", () => {
       body.toLowerCase().includes(searchedValue)
     );
   });
-  isSearched = true;
   renderTable(posts);
 });
 
