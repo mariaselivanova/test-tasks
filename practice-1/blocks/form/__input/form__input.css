@@ -11,3 +11,9 @@
   border: 1px solid #d6dade;
   border-radius: 2px;
 }
+
+@media screen and (max-width: 700px) {
+  .form__input {
+    font-size: 13px;
+  }
+}
