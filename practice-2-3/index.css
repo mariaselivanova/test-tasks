@@ -1,0 +1,7 @@
+th {
+  cursor: pointer;
+}
+
+th:hover {
+  opacity: 0.8;
+}

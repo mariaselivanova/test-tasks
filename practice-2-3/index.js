@@ -1,8 +1,11 @@
 const postTable = document.getElementById("table");
 const searchInput = document.getElementById("searchInput");
 const tableBody = postTable.querySelector("tbody");
+const tableHeads = document.querySelectorAll("th");
 
 let posts = [];
+let sortColumn = null;
+let sortDirection = "asc";
 
 async function getPosts() {
   try {
@@ -55,4 +58,30 @@ searchInput.addEventListener("input", () => {
   renderTable(filteredPosts);
 });
 
+function sortData(column) {
+  if (sortColumn === column) {
+    sortDirection = sortDirection === "asc" ? "desc" : "asc";
+  } else {
+    sortDirection = "asc";
+  }
+
+  const sorted = [...posts];
+
+  sorted.sort((a, b) => {
+    const aValue = a[column];
+    const bValue = b[column];
+
+    if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
+    if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+    return 0;
+  });
+
+  sortColumn = column;
+  renderTable(sorted);
+}
+
 getPosts();
+
+Array.from(tableHeads).forEach((th) => {
+  th.addEventListener("click", () => sortData(th.id));
+});
