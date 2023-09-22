@@ -3,5 +3,5 @@ th {
 }
 
 th:hover {
-  opacity: 0.8;
+  background-color: rgb(219, 219, 219);
 }
