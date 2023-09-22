@@ -132,6 +132,6 @@ modal.addEventListener("click", (e) => {
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    toggleModal();
+    closeModal();
   }
 });
