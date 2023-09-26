@@ -62,7 +62,6 @@ const checkInputs = ({ id, pattern }, callback) => {
     const value = inputElement.value;
     const isValid = pattern.test(value);
     inputElement.setCustomValidity(callback(isValid, value));
-    inputElement.reportValidity();
   });
 };
 
